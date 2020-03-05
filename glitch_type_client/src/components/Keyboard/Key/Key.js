@@ -13,6 +13,7 @@ const getKeyClassName = (keyType, pressed) => {
         case "enter": return [keyStyleClass, classes.enter].join(' ')
         case "capsLock": return [keyStyleClass, classes.capsLock].join(' ')
         case "backSpace": return [keyStyleClass, classes.backSpace].join(' ')
+        case "tab": return [keyStyleClass, classes.tab].join(' ')
         default:
             console.log('Unknown key type!')
             break
@@ -25,7 +26,7 @@ const key = (props) => {
 
     return (
         <div className={keyStyleClass}>
-            {props.keyName}
+            {props.disabled ? "" : props.keyName}
         </div>
     )
 }
