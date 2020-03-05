@@ -1,0 +1,8 @@
+.Leaderboard {
+    background-color: rgb(12, 161, 161);
+    position: fixed;
+    right: 0;
+    top: 56px;
+    width: 25%;
+    height: 70%;
+}
