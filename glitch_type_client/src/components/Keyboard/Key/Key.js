@@ -1,0 +1,33 @@
+import React from 'react'
+
+import classes from './Key.module.css'
+
+const getKeyClassName = (keyType, pressed) => {
+    let keyStyleClass = pressed ? classes.pressedKey : classes.unpressedKey
+
+    switch (keyType) {
+        case "letter": return [keyStyleClass, classes.letter].join(' ')
+        case "leftShift": return [keyStyleClass, classes.leftShift].join(' ')
+        case "rightShift": return [keyStyleClass, classes.rightShift].join(' ')
+        case "space": return [keyStyleClass, classes.space].join(' ')
+        case "enter": return [keyStyleClass, classes.enter].join(' ')
+        case "capsLock": return [keyStyleClass, classes.capsLock].join(' ')
+        case "backSpace": return [keyStyleClass, classes.backSpace].join(' ')
+        default:
+            console.log('Unknown key type!')
+            break
+    }
+}
+
+const key = (props) => {
+    
+    const keyStyleClass = getKeyClassName(props.keyType, props.pressed)
+
+    return (
+        <div className={keyStyleClass}>
+            {props.keyName}
+        </div>
+    )
+}
+
+export default key

@@ -1,0 +1,11 @@
+.Keyboard {
+    position: relative;
+    /* margin-top: 60vh; */
+    height: 30vh;
+    width: 800px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: auto; */
+    /* margin-bottom: 50px; */
+}
