@@ -10,7 +10,7 @@ class GameArea extends Component {
         return (
             <div className={classes.GameArea}>
                 <div className={classes.TypingArea}>
-                    <TypingArea />
+                    <TypingArea text={"Hello world test"}/>
                 </div>
                 <div className={classes.StatsArea}>
                     {/* <TypingArea /> */}

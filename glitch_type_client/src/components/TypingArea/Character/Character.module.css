@@ -1,0 +1,12 @@
+.Character {
+    font-size: 20px;
+    color: #999;
+}
+
+.correct {
+    color: #2980b9
+}
+
+.incorrect {
+    color: red
+}
