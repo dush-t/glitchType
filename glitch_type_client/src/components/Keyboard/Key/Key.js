@@ -28,9 +28,11 @@ const key = (props) => {
         keyStyleClass = [keyStyleClass, classes.disabled].join(' ')
     }
 
+    let key = props.disabled ? "" : props.keyName
+
     return (
         <div className={keyStyleClass}>
-            {props.disabled ? "" : props.keyName}
+            {props.upperCase && props.keyType === "letter" ? key.toUpperCase() : key}
         </div>
     )
 }

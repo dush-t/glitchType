@@ -14,11 +14,13 @@ class Keyboard extends Component {
         super(props)
         console.log("Building keyboard from data")
         this.state = {
+            eggString: '',
             row1: {},
             row2: {},
             row3: {},
             row4: {},
             row5: {},
+            capsLock: false
         }
         Object.keys(keyboardData).forEach((key) => {
             let rowKeyData = {}
@@ -31,13 +33,25 @@ class Keyboard extends Component {
         console.log(this.state)
     }
 
-    componentWillMount = () => {
+    componentDidMount = () => {
         window.addEventListener('keydown', (e) => {
-            const {row, keyName} = keyMap[e.keyCode.toString()]
+            const keyData = keyMap[e.keyCode.toString()]
+            if (keyData === undefined || keyData === null) {
+                console.log('Unsupported key pressed')
+                return
+            }
+
+            const {row, keyName} = keyData
             this.keyDownHandler(row, keyName)
         })
         window.addEventListener('keyup', (e) => {
-            const {row, keyName} = keyMap[e.keyCode.toString()]
+            const keyData = keyMap[e.keyCode.toString()]
+            if (keyData === undefined || keyData === null) {
+                console.log('Unsupported key pressed')
+                return
+            }
+
+            const {row, keyName} = keyData
             this.keyUpHandler(row, keyName)
         })
     }
@@ -45,6 +59,10 @@ class Keyboard extends Component {
     keyDownHandler = (row, key) => {
         const rowObj = this.state[row]
         const keyObj = rowObj[key]
+        if (keyObj.disabled) {
+            return
+        }
+
         const updatedKeyObj = {...keyObj, pressed: true}
         const updatedRowObj = {...rowObj}
         updatedRowObj[key] = updatedKeyObj
@@ -58,12 +76,27 @@ class Keyboard extends Component {
     keyUpHandler = (row, key) => {
         const rowObj = this.state[row]
         const keyObj = rowObj[key]
+        if (keyObj.disabled) {
+            return
+        }
+        
         const updatedKeyObj = {...keyObj, pressed: false}
         const updatedRowObj = {...rowObj}
         updatedRowObj[key] = updatedKeyObj
 
         const updationObj = {}
         updationObj[row] = updatedRowObj
+
+        if (key === 'Caps') {
+            updationObj['capsLock'] = !this.state.capsLock
+            updationObj[row][key].pressed = !this.state.capsLock
+        }
+        
+        updationObj.eggString = this.state.eggString + key
+        if (updationObj.eggString === 'gay') {
+            alert('Ur mom gay')
+        }
+        console.log(updationObj.eggString)
 
         this.setState(updationObj)
     }
@@ -73,7 +106,7 @@ class Keyboard extends Component {
         const keyList = Object.keys(rowData).map((keyName) => {
             const {pressed, disabled, type} = rowData[keyName]
             return (
-                <Key pressed={pressed} keyType={type} disabled={disabled} keyName={keyName} key={keyName}/>
+                <Key pressed={pressed} keyType={type} disabled={disabled} keyName={keyName} key={keyName} upperCase={this.state.capsLock}/>
             )
         })
         return keyList

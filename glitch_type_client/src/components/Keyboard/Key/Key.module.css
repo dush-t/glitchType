@@ -5,7 +5,7 @@
     width: 100px;
     height: 68%;
     display: block;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     text-align: left;
     padding-top: 5px;
     padding-left: 12px;
@@ -26,8 +26,8 @@
     width: 100px;
     height: 68%;
     display: block;
-    background-color: white;
-    border: 2px solid #2980b9;
+    background-color: #ececec;
+    /* border: 2px solid #2980b9; */
     text-align: left;
     padding-top: 5px;
     padding-left: 12px;
@@ -39,11 +39,11 @@
     margin-left: 10px;
     margin-bottom: 2px;
     cursor: pointer;
-    transition: box-shadow 0.7s ease;
+    transition: box-shadow 0.7s ease height 0.2s ease;
 }
 
 .disabled {
-    border: 2px solid #aaa;
+    /* border: 2px solid #aaa; */
     background-color: #ccc;
 }
 

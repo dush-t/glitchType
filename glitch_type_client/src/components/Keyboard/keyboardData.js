@@ -16,7 +16,7 @@ const keyboardData = {
         {value: 'Backspace', type: 'backSpace', disabled: false}
     ],
     row2: [
-        {value: 'Tab', type: 'tab', disabled: false}, 
+        {value: 'Tab', type: 'tab', disabled: true}, 
         {value: 'q', type: 'letter', disabled: false}, 
         {value: 'w', type: 'letter', disabled: false}, 
         {value: 'e', type: 'letter', disabled: false}, 
