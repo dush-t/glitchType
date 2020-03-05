@@ -22,7 +22,11 @@ const getKeyClassName = (keyType, pressed) => {
 
 const key = (props) => {
     
-    const keyStyleClass = getKeyClassName(props.keyType, props.pressed)
+    let keyStyleClass = getKeyClassName(props.keyType, props.pressed)
+
+    if (props.disabled) {
+        keyStyleClass = [keyStyleClass, classes.disabled].join(' ')
+    }
 
     return (
         <div className={keyStyleClass}>

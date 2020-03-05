@@ -10,5 +10,7 @@
 .row {
     background-color: violet;
     height: 20%;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

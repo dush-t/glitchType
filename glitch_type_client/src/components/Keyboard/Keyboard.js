@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 import classes from './Keyboard.module.css'
 import keyboardData from './keyboardData'
+import keyMap from './keyMap'
 
 import Key from './Key/Key'
 
@@ -28,6 +29,17 @@ class Keyboard extends Component {
         })
 
         console.log(this.state)
+    }
+
+    componentWillMount = () => {
+        window.addEventListener('keydown', (e) => {
+            const {row, keyName} = keyMap[e.keyCode.toString()]
+            this.keyDownHandler(row, keyName)
+        })
+        window.addEventListener('keyup', (e) => {
+            const {row, keyName} = keyMap[e.keyCode.toString()]
+            this.keyUpHandler(row, keyName)
+        })
     }
 
     keyDownHandler = (row, key) => {
@@ -61,7 +73,7 @@ class Keyboard extends Component {
         const keyList = Object.keys(rowData).map((keyName) => {
             const {pressed, disabled, type} = rowData[keyName]
             return (
-                <Key pressed={pressed} keyType={type} disabled={disabled} keyName={keyName} id={keyName}/>
+                <Key pressed={pressed} keyType={type} disabled={disabled} keyName={keyName} key={keyName}/>
             )
         })
         return keyList
