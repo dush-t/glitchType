@@ -3,7 +3,10 @@ import React from 'react'
 import classes from './Key.module.css'
 
 const getKeyClassName = (keyType, pressed) => {
-    let keyStyleClass = pressed ? classes.pressedKey : classes.unpressedKey
+    let keyStyleClass = classes.key
+    if (pressed) {
+        keyStyleClass = [keyStyleClass, classes.pressed].join(' ')
+    }
 
     switch (keyType) {
         case "letter": return [keyStyleClass, classes.letter].join(' ')
