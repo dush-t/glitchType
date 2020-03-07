@@ -33,3 +33,12 @@
     height: 50%;
     width: 35%;
 }
+
+.CurrentWordArea {
+    position: absolute;
+    background-color: yellowgreen;
+    top: 0;
+    right: 0;
+    width: 80%;
+    height: 20%;
+}

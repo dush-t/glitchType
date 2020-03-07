@@ -42,6 +42,7 @@ class Keyboard extends Component {
             }
 
             const {row, keyName} = keyData
+            // console.log(e)
             this.keyDownHandler(row, keyName)
         })
         window.addEventListener('keyup', (e) => {
@@ -96,7 +97,6 @@ class Keyboard extends Component {
         if (updationObj.eggString === 'gay') {
             alert('Ur mom gay')
         }
-        console.log(updationObj.eggString)
 
         this.setState(updationObj)
     }
