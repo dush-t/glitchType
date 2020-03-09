@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 
 import Character from './Character/Character'
 import KeyMap from '../Keyboard/keyMap'
+import * as keyStrokeActions from '../../store/actions/index';
 
 import classes from './TypingArea.module.css'
 
@@ -42,10 +44,13 @@ class TypingArea extends Component {
         if (keyValue === this.state.textArray[this.state.correctPosition]) {
             const newCorrectPosition = this.state.correctPosition + 1
             this.setState({ correctPosition: newCorrectPosition})
+            this.props.onCorrectKeyStroke(keyValue)
 
         } else {
             const newIncorrectOffset = this.state.incorrectOffset + 1
             this.setState({ incorrectOffset: newIncorrectOffset })
+            this.props.onIncorrectKeyStroke(keyValue)
+
         }
     }
 
@@ -92,4 +97,15 @@ class TypingArea extends Component {
     }
 }
 
-export default TypingArea
+const mapStateToProps = () => {
+    return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onCorrectKeyStroke: (keyStroke) => dispatch(keyStrokeActions.handleCorrectKeyStroke(keyStroke)),
+        onIncorrectKeyStroke: (keyStroke) => dispatch(keyStrokeActions.handleIncorrectKeyStroke(keyStroke))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TypingArea)

@@ -14,7 +14,7 @@ const updateStatsCorrectKeystroke = (state, keyStroke) => {
     }
 
     const newKeyStrokes = state.keyStrokes + 1
-    const newAccuracy = (state.accuracy * state.keyStrokes + 1) / newKeyStrokes
+    const newAccuracy = parseInt(((state.accuracy/100) * state.keyStrokes + 1) * 100 / newKeyStrokes)
     return {
         ...state,
         currentWord: newWord,
@@ -28,7 +28,7 @@ const updateStatsCorrectKeystroke = (state, keyStroke) => {
 const updateStatsIncorrectKeystroke = (state, keyStroke) => {
     const newWord = state.currentWord + keyStroke
     const newKeyStrokes = state.keyStrokes + 1
-    const newAccuracy = (state.accuracy * state.keyStrokes - 1) / newKeyStrokes
+    const newAccuracy = parseInt(((state.accuracy/100) * state.keyStrokes) * 100 / newKeyStrokes)
     return {
         ...state,
         currentWord: newWord,

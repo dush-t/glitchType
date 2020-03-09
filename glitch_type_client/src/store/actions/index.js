@@ -1,4 +1,4 @@
 export {
-    handleCorrectKeystroke,
-    handleIncorrectKeystroke
-} from './gameStats'
+    handleCorrectKeyStroke,
+    handleIncorrectKeyStroke
+} from './keyStroke'
