@@ -8,12 +8,14 @@ const stats = (props) => {
 
     const accuracyStyles = {fontSize: "30px", marginLeft: "22px"}
 
+    console.log(classes.current)
     return (
         <div className={classes.StatsArea}>
             <div className={classes.position}>Position: <span className={classes.positionValue}>{props.position}</span></div>
             <div className={classes.keystrokes}>Keystrokes: <span className={classes.keystrokesValue}>{props.keyStrokes}</span></div>
             <div>Accuracy: <span style={accuracyStyles}>{props.accuracy}%</span></div>
-            <div>Current Word: {props.currentWord}</div>
+            
+            <div className={classes.currentWord}>{props.currentWord}</div>
         </div>
     )
 }

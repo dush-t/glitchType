@@ -43,3 +43,9 @@
     width: 80%;
     height: 20%;
 }
+
+.current {
+    /* font-weight: 600; */
+    font-size: 300px;
+    margin-top: 30px;
+}

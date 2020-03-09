@@ -25,3 +25,9 @@
     color: #777;
     /* margin-bottom: 20px; */
 }
+
+.currentWord {
+    font-weight: 600;
+    font-size: 50px;
+    margin-top: 50px;
+}
