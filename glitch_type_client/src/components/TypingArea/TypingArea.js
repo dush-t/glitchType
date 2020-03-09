@@ -23,13 +23,10 @@ class TypingArea extends Component {
             this.handleKeyStroke(keyCode.toString(), key)
             console.log(keyCode, key)
         })
-        console.log("Listener added")
     }
 
     handleKeyStroke = (keyCode, keyValue) => {
-        console.log("Function called")
-        if (!KeyMap[keyCode].allowInput) {
-            console.log("Input not allowed")
+        if (!KeyMap[keyCode].allowInput) {  // Don't record input for keys like Alt and Ctrl
             return
         }
 
@@ -38,10 +35,14 @@ class TypingArea extends Component {
             return
         }
 
-        if (keyValue === this.state.textArray[this.state.correctPosition]) {
+        if (this.state.correctPosition === this.state.textArray.length) {
+            return
+        }
 
+        if (keyValue === this.state.textArray[this.state.correctPosition]) {
             const newCorrectPosition = this.state.correctPosition + 1
             this.setState({ correctPosition: newCorrectPosition})
+
         } else {
             const newIncorrectOffset = this.state.incorrectOffset + 1
             this.setState({ incorrectOffset: newIncorrectOffset })
@@ -51,6 +52,11 @@ class TypingArea extends Component {
     doBackSpace = () => {
         let incorrectOffset = this.state.incorrectOffset
         let correctPosition = this.state.correctPosition
+        const trailPosition = this.state.trailPosition
+
+        if (correctPosition === trailPosition) {
+            return
+        }
 
         if (incorrectOffset > 0) {
             const newIncorrectOffset = incorrectOffset - 1

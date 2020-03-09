@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 import Keyboard from '../../components/Keyboard/Keyboard'
 import TypingArea from '../../components/TypingArea/TypingArea'
+import Stats from '../../components/Stats/Stats'
 
 import classes from './GameArea.module.css'
 
@@ -13,9 +14,7 @@ class GameArea extends Component {
                     <TypingArea text={"Helloworldtest"}/>
                 </div>
                 <div className={classes.StatsArea}>
-                    {/* <div className={classes.CurrentWordArea}>
-                        CurrentWord
-                    </div> */}
+                    <Stats position={1} keystrokes={20} accuracy={90} />
                 </div>
                 <div className={classes.KeyboardArea}>
                     <Keyboard />

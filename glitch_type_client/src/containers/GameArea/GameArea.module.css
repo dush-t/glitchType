@@ -27,10 +27,11 @@
 
 .StatsArea {
     position: absolute;
-    background-color: #aaa;
+    /* border: 1px solid #aaa; */
+    /* background-color: #aaa; */
     top: 0;
     right: 0;
-    height: 50%;
+    height: 49%;
     width: 35%;
 }
 

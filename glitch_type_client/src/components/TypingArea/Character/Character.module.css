@@ -1,12 +1,18 @@
 .Character {
     font-size: 20px;
     color: #999;
+    transition: font-size 0.2s ease-out;
+    /* transition: font-weight 0.3s; */
 }
 
 .correct {
-    color: #2980b9
+    color: #2980b9;
+    font-weight: 500;
+    font-size: 23px;
 }
 
 .incorrect {
-    color: red
+    color: red;
+    font-weight: 500;
+    font-size: 23px;
 }
