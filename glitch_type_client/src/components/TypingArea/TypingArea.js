@@ -11,12 +11,6 @@ class TypingArea extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {}
-        
-        this.state['textArray'] = props.text.split('')
-        this.state['correctPosition'] = 0
-        this.state['incorrectOffset'] = 0
-        this.state['trailPosition'] = 0
     }
 
     componentDidMount = () => {
@@ -33,51 +27,29 @@ class TypingArea extends Component {
         }
 
         if (keyCode === '8') {
-            this.doBackSpace()
+            this.props.onBackspace()
             return
         }
 
-        if (this.state.correctPosition === this.state.textArray.length) {
+        if (this.props.correctPosition === this.props.textArray.length) {
             return
         }
 
-        if (keyValue === this.state.textArray[this.state.correctPosition]) {
-            const newCorrectPosition = this.state.correctPosition + 1
-            this.setState({ correctPosition: newCorrectPosition})
+        if (keyValue === this.props.textArray[this.props.correctPosition]) {
             this.props.onCorrectKeyStroke(keyValue)
 
         } else {
-            const newIncorrectOffset = this.state.incorrectOffset + 1
-            this.setState({ incorrectOffset: newIncorrectOffset })
             this.props.onIncorrectKeyStroke(keyValue)
 
         }
     }
-
-    doBackSpace = () => {
-        let incorrectOffset = this.state.incorrectOffset
-        let correctPosition = this.state.correctPosition
-        const trailPosition = this.state.trailPosition
-
-        if (correctPosition === trailPosition) {
-            return
-        }
-
-        if (incorrectOffset > 0) {
-            const newIncorrectOffset = incorrectOffset - 1
-            this.setState({ incorrectOffset: newIncorrectOffset })
-        } else {
-            const newCorrectPosition = correctPosition - 1
-            this.setState({ correctPosition: newCorrectPosition})
-        }
-    }
     
     render() {
-        const {trailPosition, correctPosition, incorrectOffset} = this.state
+        const {trailPosition, correctPosition, incorrectOffset} = this.props
         console.log(`trail: ${trailPosition} | correct: ${correctPosition} | incorrect: ${incorrectOffset}`)
         // const {trailPosition, correctPosition, incorrectOffset} = {trailPosition: 0, correctPosition: 4, incorrectOffset: 1}
 
-        const chars = this.state.textArray.map((char, i) => {
+        const chars = this.props.textArray.map((char, i) => {
             if (i < trailPosition) {
                 return <Character touched={false} correct={true} value={char} />
             } else if (i >= trailPosition && i < correctPosition) {
@@ -97,14 +69,20 @@ class TypingArea extends Component {
     }
 }
 
-const mapStateToProps = () => {
-    return {}
+const mapStateToProps = (state) => {
+    return {
+        textArray: state.typingArea.textArray,
+        correctPosition: state.typingArea.correctPosition,
+        incorrectOffset: state.typingArea.incorrectOffset,
+        trailPosition: state.typingArea.trailPosition
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onCorrectKeyStroke: (keyStroke) => dispatch(keyStrokeActions.handleCorrectKeyStroke(keyStroke)),
-        onIncorrectKeyStroke: (keyStroke) => dispatch(keyStrokeActions.handleIncorrectKeyStroke(keyStroke))
+        onIncorrectKeyStroke: (keyStroke) => dispatch(keyStrokeActions.handleIncorrectKeyStroke(keyStroke)),
+        onBackspace: () => dispatch(keyStrokeActions.handleBackspace())
     }
 }
 

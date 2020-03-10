@@ -13,3 +13,9 @@ export const handleCorrectKeyStroke = (keyStroke) => {
         keyStroke: keyStroke
     }
 }
+
+export const handleBackspace = () => {
+    return {
+        type: actionTypes.BACKSPACE_PRESSED
+    }
+}

@@ -9,11 +9,13 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
 import gameStatsReducer from './store/reducers/gameStats'
+import typingAreaReducer from './store/reducers/typingArea'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-    gameStats: gameStatsReducer
+    gameStats: gameStatsReducer,
+    typingArea: typingAreaReducer
 })
 
 const store = createStore(rootReducer, composeEnhancers(

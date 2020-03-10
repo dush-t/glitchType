@@ -1,4 +1,5 @@
 export {
     handleCorrectKeyStroke,
-    handleIncorrectKeyStroke
+    handleIncorrectKeyStroke,
+    handleBackspace
 } from './keyStroke'
