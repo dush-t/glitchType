@@ -42,4 +42,25 @@
     color: #2980b9;
 }
 
+.BottomLinkContainer {
+    width: 317px;
+    margin-top: 20px;
+    border-top: 0.1px solid white;
+    padding-top: 2px;
+}
+
+.BottomLink {
+    color: white;
+    font-size: 15px;
+}
+
+.BottomLink:first-child {
+    margin-right: 10px;
+}
+
+.BottomLink:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 /* #2980b9; */

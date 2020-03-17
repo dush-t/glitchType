@@ -9,6 +9,9 @@ const authForm = (props) => {
             <input placeholder={'Username'}></input>
             <input placeholder={'Room ID'}></input>
             <div className={classes.JoinButton}>Join</div>
+            <div className={classes.BottomLinkContainer}>
+                <span className={classes.BottomLink}>Instructions</span> <span className={classes.BottomLink}>Developers</span>
+            </div>
         </div>
     )
 }
