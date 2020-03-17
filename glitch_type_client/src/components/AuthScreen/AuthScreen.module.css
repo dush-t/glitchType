@@ -1,0 +1,17 @@
+.FormContainer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #2980b9;
+}
+
+.InstructionContainer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    /* background-color: red; */
+}

@@ -10,12 +10,16 @@ import thunk from 'redux-thunk';
 
 import gameStatsReducer from './store/reducers/gameStats'
 import typingAreaReducer from './store/reducers/typingArea'
+import leaderboardReducer from './store/reducers/leaderboard'
+import gameDataReducer from './store/reducers/gameData'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     gameStats: gameStatsReducer,
-    typingArea: typingAreaReducer
+    typingArea: typingAreaReducer,
+    leaderboard: leaderboardReducer,
+    gameData: gameDataReducer
 })
 
 const store = createStore(rootReducer, composeEnhancers(

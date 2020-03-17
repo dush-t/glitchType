@@ -9,10 +9,6 @@ import classes from './TypingArea.module.css'
 
 class TypingArea extends Component {
 
-    constructor(props) {
-        super(props)
-    }
-
     componentDidMount = () => {
         window.addEventListener('keydown', (e) => {
             const {keyCode, key} = e

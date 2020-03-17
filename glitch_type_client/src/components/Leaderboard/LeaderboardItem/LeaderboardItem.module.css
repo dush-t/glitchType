@@ -1,0 +1,11 @@
+.LeaderboardItem {
+    background-color: lime;
+    width: 100%;
+    font-size: 20px;
+}
+
+.LeaderboardItem td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
