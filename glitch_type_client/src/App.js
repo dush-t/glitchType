@@ -7,6 +7,7 @@ import GameLogs from './containers/GameLogs/GameLogs'
 import AuthScreen from './components/AuthScreen/AuthScreen'
 
 import Layout from './hoc/Layout/Layout'
+import SocketManager from './hoc/SocketManager/SocketManager'
 
 function App(props) {
   let screen = null
@@ -23,7 +24,11 @@ function App(props) {
     screen = <AuthScreen />
   }
 
-  return screen
+  return (
+    <SocketManager>
+      {screen}
+    </SocketManager>
+  )
 }
 
 const mapStateToProps = (state) => {
