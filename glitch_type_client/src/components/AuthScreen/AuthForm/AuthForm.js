@@ -13,6 +13,7 @@ class AuthForm extends Component {
         switch (inputName) {
             case 'usernameInput': return this.setState({ usernameInput: event.target.value })
             case 'roomIdInput': return this.setState({ roomIdInput: event.target.value })
+            default: return
         }
     }
 

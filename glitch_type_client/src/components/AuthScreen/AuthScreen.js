@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import AuthForm from './AuthForm/AuthForm'
 import Instruction from './Instruction/Instruction'
