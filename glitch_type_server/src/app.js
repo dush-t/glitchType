@@ -8,6 +8,7 @@ const server = http.createServer(app)
 const io = socketio(server)
 
 const { addUser, getUser, removeUser, getAllUsersInRoom } = require("./utils/users")
+const quickSort = require("./utils/quicksort")
 
 const publicDirectory = path.join(__dirname, "../../glitch_type_client/public")
 app.use(express.static(publicDirectory))
@@ -45,11 +46,10 @@ io.on("connection", (socket) => {
     socket.on("recentScore", (updatedScore) => {
         getUser(socket.id).score = updatedScore
         room = getUser(socket.id).room
-        let scoreCard = getAllUsersInRoom(room)
-        //Sorting
-        //Though sorting could have also been done at client side.
+        let scoreCard = getAllUsersInRoom(room).info
+        leaderboard = quickSort(scoreCard).reverse()
 
-        io.to(room).emit("leaderboard", getAllUsersInRoom(room))
+        io.to(room).emit("leaderboard", leaderboard)
     })
 
 })
