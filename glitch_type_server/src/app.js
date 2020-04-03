@@ -28,8 +28,8 @@ io.on("connection", (socket) => {
         callback()
     })
 
-    socket.on("start", (id, timestamp, callback) => {
-        const user = getUser(id)
+    socket.on("start", (timestamp, callback) => {
+        const user = getUser(socket.id)
         user.timeStart = timestamp
 
         if (user === undefined) {
@@ -40,7 +40,7 @@ io.on("connection", (socket) => {
 
         socket.join(user.room)
         socket.emit("message", { username: user.username, text: `Hello ${user.username}!` })
-        socket.broadcast().to(user.room).emit("startGameMessage", { roomTimestamp: roomTimestamp[user.room], text: `${user.username} has started playing.`, room: user.room })
+        socket.broadcast().to(user.room).emit("gameMessage", { roomTimestamp: roomTimestamp[user.room], text: `${user.username} has started playing.`, room: user.room })
     })
 
     socket.on("recentScore", (updatedScore) => {
@@ -50,6 +50,13 @@ io.on("connection", (socket) => {
         leaderboard = quickSort(scoreCard).reverse()
 
         io.to(room).emit("leaderboard", leaderboard)
+    })
+
+
+    socket.on("disconnect", () => {
+        const user = removeUser(socket.id).info
+        roomTimestamp[user.room] = (new Date()).getTime()
+        socket.to(user.room).emit("gameMessage", { roomTimestamp: roomTimestamp[user.room], text: `${user.username} has left.`, room: user.room })
     })
 
 })
